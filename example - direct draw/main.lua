@@ -1,5 +1,4 @@
 import "CoreLibs/graphics"
-import "CoreLibs/sprites"
 import "animatedimage"
 
 local graphics <const> = playdate.graphics
@@ -24,13 +23,14 @@ local input_vector = geometry.vector2D.new(0, 0)
 playdate.display.setRefreshRate(50)
 
 -- setup player 
-local playerImage = graphics.image.new(19, 30)
-local playerSprite = graphics.sprite.new(nil)
-playerSprite:moveTo(200, 120) 
-playerSprite:add()
+local player = {}
+player.position = {x = 200, y = 120}
 
 -- main loop
 function playdate.update()
+	
+	graphics.clear()
+	
 	
 	-- determine current animation from user inputs
 	local current_animation = nil
@@ -42,18 +42,16 @@ function playdate.update()
 		current_animation = input_vector.dx < 0 and animation.walkW or input_vector.dx > 0 and animation.walkE or animation.idle
 	end
 	
-	-- get current animation frame as an image
-	current_image = current_animation:getImage()
-	
-	-- update the player sprite
-	playerSprite:setImage(current_image)
+	-- attach animation to the player
+	player.animation = current_animation
 	
 	-- move player according to user inputs
-	playerSprite:moveBy(input_vector.dx, input_vector.dy)
+	player.position.x += input_vector.dx
+	player.position.y += input_vector.dy
 	
-	-- update sprites
-	graphics.sprite.update()
-	
+	-- draw player
+	player.animation:drawCentered(player.position.x, player.position.y)
+
 end
 
 -- translate user inputs to input_vector
