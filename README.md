@@ -27,6 +27,12 @@ Create a new `AnimatedImage`.
 * `options.first` is the index of the first frame in the animation.
 * `options.last` is the index of the last frame in the animation.
 
+Example:
+
+```walkSouth = AnimatedImage.new("spritesheet_walking", {sequence = {1, 2, 3, 4}, delay = 100, loop = true})```
+
+Creates a new animated image called `walkSouth` that uses frames 1, 2, 3 & 4 from the `spritesheet_walking` image table and loops through them at a rate of 100ms (10 frames per second).
+
 
 ## `AnimatedImage:reset()`
 Reset the frame to the start frame of the `AnimatedImage`.
