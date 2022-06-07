@@ -78,6 +78,10 @@ function AnimatedImage:getFrame()
 	return self.loop.frame
 end
 
+function AnimatedImage:getImage()
+	return self.image_table:getImage(self.loop.frame)
+end
+
 function AnimatedImage:setFirstFrame(frame)
 	self.loop.startFrame = frame
 end
