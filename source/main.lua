@@ -4,7 +4,7 @@ import "animatedimage"
 local graphics <const> = playdate.graphics
 local geometry <const> = playdate.geometry
 
--- create animations using AnimatedImage library
+-- create animations using animatedimage library
 local animation = {}
 animation.walkS = AnimatedImage.new("spritesheet_walking", {sequence = {1, 2, 3, 4}, delay = 100, loop = true})
 animation.walkN = AnimatedImage.new("spritesheet_walking", {sequence = {5, 6, 7, 8}, delay = 100, loop = true})
@@ -14,7 +14,7 @@ animation.walkNW = AnimatedImage.new("spritesheet_walking", {sequence = {17, 18,
 animation.walkNE = AnimatedImage.new("spritesheet_walking", {sequence = {21, 22, 23, 24}, delay = 100, loop = true})
 animation.walkSW = AnimatedImage.new("spritesheet_walking", {sequence = {25, 26, 27, 28}, delay = 100, loop = true})
 animation.walkSE = AnimatedImage.new("spritesheet_walking", {sequence = {29, 30, 31, 32}, delay = 100, loop = true})
-animation.idle = AnimatedImage.new("spritesheet_walking", {sequence = {1}, delay = 100, loop = false})
+animation.idle = AnimatedImage.new("spritesheet_walking", {sequence = {1}, delay = 100, loop = true})
 
 -- setup input
 local input_vector = geometry.vector2D.new(0, 0)
