@@ -11,7 +11,6 @@ AnimatedImage = {}
 --   delay: 
 --   paused: start in a paused state.
 --   loop: loop the animation.
---   
 
 function AnimatedImage.new(image_table_path, options)
 	options = options or {}
