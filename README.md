@@ -1,12 +1,10 @@
 # AnimatedImage for Playdate
 
-### Modified version of Dustin Mierau's library: https://github.com/mierau/playdate-animatedimage
-
 The goal of AnimatedImage is to be able to plop in animated images in place of static images easily. No calls to update, etc. In fact, AnimatedImage behaves just like a built-in `playdate.graphics.image`. Any API `playdate.graphics.image` supports so does AnimatedImage, except it operates on the current frame. It does this by forwarding any call to the current frame image. It is more or less a drop-in replacement.
 
 AnimatedImage is less than 100 lines of Lua, and most of that is just boilerplate getter/setter as AnimatedImage sits on top of `playdate.graphics.image` and `playdate.graphics.animation.loop`. Simply replace `playdate.graphics.image.new` with `AnimatedImage.new` to get started, and change the path from a static image to that of an image table or gif.
 
-![Example Animation](/Demo.gif?raw=true "Example Animation")
+![Example Animation](/demo.gif?raw=true "Example Animation")
 
 # License
 
@@ -28,12 +26,6 @@ Create a new `AnimatedImage`.
 * `options.paused` is a boolean which either starts the animation in a paused or playing state.
 * `options.first` is the index of the first frame in the animation.
 * `options.last` is the index of the last frame in the animation.
-
-Example:
-
-```walkSouth = AnimatedImage.new("spritesheet_walking", {sequence = {1, 2, 3, 4}, delay = 100, loop = true})```
-
-Creates a new animated image called `walkSouth` that uses frames 1, 2, 3 & 4 from the `spritesheet_walking` image table and loops through them at a rate of 100ms (10 frames per second).
 
 
 ## `AnimatedImage:reset()`
@@ -69,6 +61,9 @@ Manually set the frame to display.
 
 ## `AnimatedImage:getFrame()`
 Get the currently displayed frame.
+
+## `AnimatedImage:getImage()`
+Returns the current frame as a single image object
 
 ## `AnimatedImage:setFirstFrame(frame)`
 Set the frame the animation starts and loops from.

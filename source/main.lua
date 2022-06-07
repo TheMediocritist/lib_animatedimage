@@ -14,7 +14,7 @@ animation.walkNW = AnimatedImage.new("spritesheet_walking", {sequence = {17, 18,
 animation.walkNE = AnimatedImage.new("spritesheet_walking", {sequence = {21, 22, 23, 24}, delay = 100, loop = true})
 animation.walkSW = AnimatedImage.new("spritesheet_walking", {sequence = {25, 26, 27, 28}, delay = 100, loop = true})
 animation.walkSE = AnimatedImage.new("spritesheet_walking", {sequence = {29, 30, 31, 32}, delay = 100, loop = true})
-animation.idle = AnimatedImage.new("spritesheet_walking", {sequence = {1}, delay = 100, loop = true})
+animation.idle = AnimatedImage.new("spritesheet_walking", {sequence = {1, 1, 1, 1, 1, 1, 25, 25, 25, 1, 1, 1, 32, 32, 1, 1, 1, 1}, delay = 200, loop = true})
 
 -- setup input
 local input_vector = geometry.vector2D.new(0, 0)
@@ -31,6 +31,7 @@ function playdate.update()
 	
 	graphics.clear()
 	
+	
 	-- determine current animation from user inputs
 	local current_animation = nil
 	if input_vector.dy < 0 then
@@ -40,6 +41,9 @@ function playdate.update()
 	else
 		current_animation = input_vector.dx < 0 and animation.walkW or input_vector.dx > 0 and animation.walkE or animation.idle
 	end
+	
+	local image = current_animation:getImage()
+	image:draw(0,0)
 	
 	-- attach animation to the player
 	player.animation = current_animation
