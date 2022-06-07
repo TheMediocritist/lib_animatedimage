@@ -7,10 +7,12 @@ AnimatedImage = {}
 
 -- image_table_path should be a path to an image table.
 -- options is a table of initial settings:
---   sequence: list of image frames to be used in the animation
---   delay: 
---   paused: start in a paused state.
---   loop: loop the animation.
+--   sequence:  table of frames to be used in the animation, e.g. {4, 3, 2, 1}
+--   delay:     the amount of time to delay (in milliseconds) before moving to the next frame.
+--   paused:    start in a paused state (boolean)
+--   loop:      loop the animation (boolean)
+--   first:     tindex of the first frame in the animation (default = 1)
+--   last:      index of the last frame in the animation (default = length of animation)
 
 function AnimatedImage.new(image_table_path, options)
 	options = options or {}
